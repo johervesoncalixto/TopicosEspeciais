@@ -249,6 +249,9 @@ def setDisciplina():
         conn.commit()
         conn.close()
         return("Inserido com sucesso", 200)
+    
+database = ('ifpb.db')
+    
 @app.route("/escola/<int:id>", methods=['PUT'])
 def updateEscola(id):
     print (" Atualizando Escola ")
