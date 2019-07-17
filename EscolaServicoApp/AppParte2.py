@@ -251,7 +251,7 @@ def setDisciplina():
         return("Inserido com sucesso", 200)
 @app.route("/escola/<int:id>", methods=['PUT'])
 def updateEscola(id):
-    print ("-------------- Atualizando Escola --------------")
+    print (" Atualizando Escola ")
     escola = request.get_json()
     nome = escola['nome']
     logradouro = escola['logradouro']
@@ -264,7 +264,7 @@ def updateEscola(id):
         cursor.execute("""UPDATE tb_escola SET nome=?, logradouro=?, cidade=?""" (nome,logradouro, cidade, id))
         conn.commit()
     else:
-        print ("-------------- Cadastrando Escola --------------")
+        print ("Cadastrando Escola")
         cursor.execute(""" INSERT INTO tb_escola(nome, logradouro, cidade) VALUES(?,?,?); """, (nome,logradouro, cidade))
         conn.commit()
         id = cursor.lastrowid
@@ -273,7 +273,7 @@ def updateEscola(id):
     return jsonify(escola)
 @app.route("/aluno/<int:id>", methods=['PUT'])
 def updateAluno(id):
-    print ("-------------- Atualizando Aluno --------------")
+    print ("Atualizando Aluno")
     aluno = request.get_json()
     nome = aluno['nome']
     matricula = aluno['matricula']
@@ -287,7 +287,7 @@ def updateAluno(id):
         cursor.execute("""UPDATE tb_aluno SET nome=?, matricula=?, cpf=?,nascimento=? WHERE id_aluno = ? """, (nome, matricula, cpf, nascimento,id))
         conn.commit()
     else:
-        print ("-------------- Cadastrando Aluno --------------")
+        print (" Cadastrando Aluno ")
         cursor.execute(""" INSERT INTO tb_aluno(nome, matricula, cpf, nascimento) VALUES(?,?,?,?); """, (nome, matricula, cpf, nascimento))
         conn.commit()
         id = cursor.lastrowid
@@ -296,7 +296,7 @@ def updateAluno(id):
     return jsonify(aluno)
 @app.route("/curso/<int:id>", methods=['PUT'])
 def updateCurso(id):
-    print ("-------------- Atualizando Curso --------------")
+    print (" Atualizando Curso ")
     curso = request.get_json()
     nome = curso['nome']
     turno = curso['turno']
@@ -308,7 +308,7 @@ def updateCurso(id):
         cursor.execute("""UPDATE tb_curso SET nome=?, turno=? WHERE id_curso = ? """, (nome, turno, id))
         conn.commit()
     else:
-        print ("-------------- Cadastrando Curso --------------")
+        print (" Cadastrando Curso ")
         cursor.execute(""" INSERT INTO tb_curso(nome, turno) VALUES(?,?); """, (nome, turno))
         conn.commit()
         id = cursor.lastrowid
@@ -317,7 +317,7 @@ def updateCurso(id):
     return jsonify(curso)
 @app.route("/turma/<int:id>", methods=['PUT'])
 def updateTurma(id):
-    print ("-------------- Atualizando Turma --------------")
+    print (" Atualizando Turma ")
     turma = request.get_json()
     nome = turma['nome']
     curso = turma['curso']
@@ -329,7 +329,7 @@ def updateTurma(id):
         cursor.execute(""" UPDATE tb_turma SET nome=?, curso=? WHERE id_disciplina = ?""", (nome,curso, id))
         conn.commit()
     else:
-        print ("-------------- Cadastrando Turma --------------")
+        print (" Cadastrando Turma ")
         cursor.execute(""" INSERT INTO tb_turma(nome, curso) VALUES(?,?); """, (nome, curso))
         conn.commit()
         id = cursor.lastrowid
@@ -338,7 +338,7 @@ def updateTurma(id):
     return jsonify(turma)
 @app.route("/disciplina/<int:id>", methods=['PUT'])
 def updateDisciplina(id):
-    print ("-------------- Atualizando Disciplina --------------")
+    print (" Atualizando Disciplina ")
     disciplina = request.get_json()
     nome = disciplina['nome']
     conn = sqlite3.connect(database)
@@ -349,7 +349,7 @@ def updateDisciplina(id):
         cursor.execute(""" UPDATE tb_disciplina SET nome=? WHERE id_disciplina = ?""", (nome, id))
         conn.commit()
     else:
-        print ("-------------- Cadastrando Disciplina --------------")
+        print (" Cadastrando Disciplina ")
         cursor.execute(""" INSERT INTO tb_disciplina(nome) VALUES(?); """, (nome,))
         conn.commit()
         id = cursor.lastrowid
